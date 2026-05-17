@@ -36,11 +36,11 @@ app.use(
         return callback(null, true)
       }
 
-      if (allowedOrigins.includes(origin)) {
+      if (origin.endsWith('.vercel.app')) {
         return callback(null, true)
       }
 
-      if (origin.endsWith('.vercel.app')) {
+      if (origin.includes('localhost')) {
         return callback(null, true)
       }
 
