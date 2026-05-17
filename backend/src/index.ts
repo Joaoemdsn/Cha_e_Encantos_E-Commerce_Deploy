@@ -19,38 +19,43 @@ dotenv.config()
 const app = express()
 const PORT = process.env.PORT || 5000
 
-const allowedOrigins = [
-  'http://localhost:5173',
-  'http://localhost:5174',
-  process.env.FRONTEND_URL,
-  process.env.PUBLIC_APP_URL,
-]
-  .filter(Boolean)
-  .flatMap((origin) => String(origin).split(','))
-  .map((origin) => origin.trim())
+// CORS forçado para produção/deploy.
+// Este middleware vem antes de qualquer rota.
+app.use((req, res, next) => {
+  const origin = req.headers.origin
 
+  if (origin) {
+    res.setHeader('Access-Control-Allow-Origin', origin)
+  }
+
+  res.setHeader(
+    'Access-Control-Allow-Methods',
+    'GET,POST,PUT,PATCH,DELETE,OPTIONS'
+  )
+
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'Content-Type, Authorization'
+  )
+
+  res.setHeader('Access-Control-Allow-Credentials', 'true')
+
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(204)
+  }
+
+  next()
+})
+
+// CORS também pelo pacote, como reforço.
 app.use(
   cors({
-    origin: (origin, callback) => {
-      if (!origin) {
-        return callback(null, true)
-      }
-
-      if (origin.endsWith('.vercel.app')) {
-        return callback(null, true)
-      }
-
-      if (origin.includes('localhost')) {
-        return callback(null, true)
-      }
-
-      return callback(new Error(`Origem não permitida pelo CORS: ${origin}`))
-    },
+    origin: true,
     credentials: true,
   })
 )
 
-// Webhook da Stripe precisa vir ANTES do express.json()
+// Webhook da Stripe precisa ficar antes do express.json()
 app.post(
   '/api/stripe/webhook',
   express.raw({ type: 'application/json' }),
@@ -59,7 +64,17 @@ app.post(
 
 app.use(express.json())
 
-// Routes
+app.get('/api/health', (req, res) => {
+  res.json({
+    status: 'OK',
+    message: 'Backend Chá e Encantos online - CORS atualizado',
+    timestamp: new Date().toISOString(),
+    origin: req.headers.origin || null,
+    frontendUrl: process.env.FRONTEND_URL || null,
+    publicAppUrl: process.env.PUBLIC_APP_URL || null,
+  })
+})
+
 app.use('/api/auth', authRoutes)
 app.use('/api/products', productRoutes)
 app.use('/api/activities', activityRoutes)
@@ -71,16 +86,6 @@ app.use('/api/reviews', reviewRoutes)
 app.use('/api/subscriptions', subscriptionRoutes)
 app.use('/api/admin', adminRoutes)
 
-// Health check
-app.get('/api/health', (req, res) => {
-  res.json({
-    status: 'OK',
-    timestamp: new Date().toISOString(),
-    allowedOrigins,
-  })
-})
-
-// Error handling
 app.use(
   (
     err: any,
@@ -89,6 +94,7 @@ app.use(
     next: express.NextFunction
   ) => {
     console.error(err)
+
     res.status(err.status || 500).json({
       error: err.message || 'Erro interno do servidor',
     })
