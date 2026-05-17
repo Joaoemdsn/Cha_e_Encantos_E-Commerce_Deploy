@@ -5,10 +5,14 @@ import { prisma } from '../lib.js'
 
 const getStripe = () => {
   const secretKey = process.env.STRIPE_SECRET_KEY
+
   if (!secretKey || secretKey.includes('sua_chave')) {
     throw new Error('STRIPE_SECRET_KEY não configurada')
   }
-  return new Stripe(secretKey)
+
+  return new Stripe(secretKey, {
+    apiVersion: '2023-08-16'
+  })
 }
 
 const priceToCents = (price: number) => Math.round(price * 100)
