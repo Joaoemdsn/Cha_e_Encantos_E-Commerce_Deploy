@@ -21,7 +21,7 @@
           rel="noopener noreferrer"
         >
           <div class="contact-icon">
-            <span>W</span>
+            <img src="/icons/whatsapp.png" alt="" aria-hidden="true" />
           </div>
 
           <div>
@@ -38,7 +38,7 @@
           rel="noopener noreferrer"
         >
           <div class="contact-icon">
-            <span>I</span>
+            <img src="/icons/instagram.png" alt="" aria-hidden="true" />
           </div>
 
           <div>
@@ -55,7 +55,7 @@
           rel="noopener noreferrer"
         >
           <div class="contact-icon">
-            <span>T</span>
+            <img src="/icons/tik-tok.png" alt="" aria-hidden="true" />
           </div>
 
           <div>
@@ -207,17 +207,19 @@
   width: 68px;
   height: 68px;
   border-radius: 50%;
-  background: #102820;
-  color: #fff8e8;
+  background: #fff8e8;
+  border: 1px solid rgba(16, 40, 32, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: inset 0 0 0 6px rgba(16, 40, 32, 0.03);
 }
 
-.contact-icon span {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.65rem;
-  font-weight: 800;
+.contact-icon img {
+  width: 36px;
+  height: 36px;
+  display: block;
+  object-fit: contain;
 }
 
 .contact-card h2 {

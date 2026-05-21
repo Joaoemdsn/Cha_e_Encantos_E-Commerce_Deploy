@@ -27,9 +27,11 @@
 
     <div class="story-section">
       <div class="story-image-card">
-        <div class="image-placeholder">
-          <span>Chá & Encantos</span>
-        </div>
+        <img
+          class="story-owner-image"
+          src="/dona-cha-e-encantos.png"
+          alt="Dona da Chá & Encantos segurando uma xícara de chá"
+        />
       </div>
 
       <div class="story-copy">
@@ -305,26 +307,13 @@
   box-shadow: 0 18px 45px rgba(16, 40, 32, 0.1);
 }
 
-.image-placeholder {
+.story-owner-image {
   width: 100%;
   height: 100%;
   min-height: 520px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-start;
-  padding: 36px;
-  background:
-    linear-gradient(rgba(16, 40, 32, 0.08), rgba(16, 40, 32, 0.4)),
-    radial-gradient(circle at 30% 20%, rgba(216, 160, 93, 0.48), transparent 28%),
-    radial-gradient(circle at 70% 55%, rgba(16, 40, 32, 0.32), transparent 32%),
-    #d8c7a8;
-}
-
-.image-placeholder span {
-  font-family: Georgia, "Times New Roman", serif;
-  color: #fff8e8;
-  font-size: 2rem;
-  font-weight: 700;
+  display: block;
+  object-fit: cover;
+  object-position: 62% center;
 }
 
 .story-copy h2,
@@ -477,7 +466,7 @@
   }
 
   .story-image-card,
-  .image-placeholder {
+  .story-owner-image {
     min-height: 360px;
   }
 
@@ -549,12 +538,8 @@
   }
 
   .story-image-card,
-  .image-placeholder {
+  .story-owner-image {
     min-height: 280px;
-  }
-
-  .image-placeholder {
-    padding: 24px;
   }
 
   .quote-section p {
