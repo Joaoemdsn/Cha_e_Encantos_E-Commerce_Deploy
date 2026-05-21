@@ -31,7 +31,7 @@ async function main() {
         weight: '40g',
         ingredients: 'camomila, melissa, lavanda',
         description: 'Infusão delicada para desacelerar o ritmo do dia.',
-        image: '/hero-tea-cup.png',
+        image: '/products/abraco-de-camomila.png',
       },
       {
         name: 'Aurora Verde',
@@ -41,7 +41,7 @@ async function main() {
         weight: '50g',
         ingredients: 'chá verde, capim-limão, gengibre',
         description: 'Blend fresco, cítrico e levemente picante.',
-        image: '/hero-tea-cup.png',
+        image: '/products/aurora-verde.png',
       },
       {
         name: 'Raiz Leve',
@@ -51,7 +51,7 @@ async function main() {
         weight: '45g',
         ingredients: 'hortelã, funcho, anis-estrelado',
         description: 'Uma xícara aromática para depois das refeições.',
-        image: '/hero-tea-cup.png',
+        image: '/products/raiz-leve.png',
       },
       {
         name: 'Jardim Rosa',
@@ -61,7 +61,7 @@ async function main() {
         weight: '35g',
         ingredients: 'hibisco, rosa mosqueta, maçã',
         description: 'Frutado, rubi e perfumado, bom quente ou gelado.',
-        image: '/hero-tea-cup.png',
+        image: '/products/jardim-rosa.png',
       },
       {
         name: 'Noite Dourada',
@@ -71,7 +71,7 @@ async function main() {
         weight: '50g',
         ingredients: 'rooibos, baunilha, canela',
         description: 'Encorpado e naturalmente sem cafeína.',
-        image: '/hero-tea-cup.png',
+        image: '/products/noite-dourada.png',
       },
       {
         name: 'Sol de Mate',
@@ -81,7 +81,7 @@ async function main() {
         weight: '60g',
         ingredients: 'erva-mate tostada, casca de laranja',
         description: 'Tostado, vivo e perfeito para preparo gelado.',
-        image: '/hero-tea-cup.png',
+        image: '/products/sol-de-mate.png',
       },
     ],
   })
