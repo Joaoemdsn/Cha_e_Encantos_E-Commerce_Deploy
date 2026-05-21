@@ -36,8 +36,8 @@
               aria-label="Adicionar ao carrinho"
             >
               <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6Z" />
-                <circle cx="12" cy="12" r="3" />
+                <path d="M7 9h10l-1 10H8L7 9Z" />
+                <path d="M9 9a3 3 0 0 1 6 0" />
               </svg>
             </button>
           </div>
